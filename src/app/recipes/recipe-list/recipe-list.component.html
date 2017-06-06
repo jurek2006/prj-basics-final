@@ -10,7 +10,7 @@
     <app-recipe-item
       *ngFor="let recipeEl of recipes"
       [recipe]="recipeEl"
-      (recipeItemSelected)="onRecipeItemSelected($event)" 
+      (recipeItemSelected)="onRecipeItemSelected(recipeEl)" 
     ></app-recipe-item>
   </div>
 </div>

@@ -11,16 +11,16 @@ import { Recipe } from '../../recipe.model';
 export class RecipeItemComponent implements OnInit {
 
 	@Input() recipe: Recipe;
-	@Output() recipeItemSelected = new EventEmitter<Recipe>();
+  // event nie będzie niczego przekazywał, weźmiemy dane, który element został kliknięty z ngFor
+	@Output() recipeItemSelected = new EventEmitter<void>();
 
   constructor() { }
 
   ngOnInit() {
   }
 
-  itemSelected(recipe: Recipe){
-  	// console.log(recipe);
-  	this.recipeItemSelected.emit(recipe);
+  itemSelected(){
+  	this.recipeItemSelected.emit();
   }
 
 }
