@@ -1,12 +1,11 @@
-<!-- powiązanie zdarzenia navBtnClicked emitowanego przez app-header 
-z metodą jego obsługi onNavBtnClicked - w app.component-->
-<app-header (navBtnClicked)="onNavBtnClicked($event)"></app-header>
+<!-- app.component.html -->
+<app-header (featureSelected)="onNavigate($event)"></app-header>
 <div class="container">
   <div class="row">
     <div class="col-md-12">
     	<!-- na podstawie wartości pól btnRecipesClicked btnShoppingListClicked wyświetlany/ukrywany jest odpowiedni komponent-->
-      <app-recipes *ngIf = "btnRecipesClicked"></app-recipes>
-      <app-shopping-list *ngIf = "btnShoppingListClicked"></app-shopping-list>
+      <app-recipes *ngIf = "loadedFeature === 'recipe'"></app-recipes>
+      <app-shopping-list *ngIf = "loadedFeature !== 'recipe'"></app-shopping-list>
     </div>
   </div>
 </div>
