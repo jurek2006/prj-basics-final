@@ -1,5 +1,5 @@
 // shopping-edit.component.ts
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, ViewChild, ElementRef } from '@angular/core';
 
 import { Ingredient } from '../../shared/ingredient.model';
 
@@ -12,16 +12,19 @@ import { Ingredient } from '../../shared/ingredient.model';
 export class ShoppingEditComponent implements OnInit {
 
 	@Output() shpListItemAdded = new EventEmitter<Ingredient>();
+	// Dostęp do pól formularza za pomocą referencji lokalnej
+	@ViewChild('nameInput') nameInputAdded: ElementRef;
+	@ViewChild('amountInput') amountInputAdded: ElementRef;
 
-  constructor() { }
+  constructor() { }amountInput
 
   ngOnInit() {
   }
 
-  onShpLstAddItem(nameInput: HTMLInputElement, amountInput: HTMLInputElement){
+  onShpLstAddItem(){
   	// metoda obsługująca kliknięcie przycisku dodawania elementu do listy zakupów
   	// uzycie + przed amountInput.value żeby zamienić stringa na liczbę
-  	this.shpListItemAdded.emit(new Ingredient(nameInput.value, +amountInput.value));
+  	this.shpListItemAdded.emit(new Ingredient(this.nameInputAdded.nativeElement.value, this.amountInputAdded.nativeElement.value));
   }
 
 }
