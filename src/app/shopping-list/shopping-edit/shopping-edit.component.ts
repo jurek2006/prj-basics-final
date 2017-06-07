@@ -13,8 +13,8 @@ export class ShoppingEditComponent implements OnInit {
 
 	@Output() shpListItemAdded = new EventEmitter<Ingredient>();
 	// Dostęp do pól formularza za pomocą referencji lokalnej
-	@ViewChild('nameInput') nameInputAdded: ElementRef;
-	@ViewChild('amountInput') amountInputAdded: ElementRef;
+	@ViewChild('nameInput') nameInputRef: ElementRef;
+	@ViewChild('amountInput') amountInputRef: ElementRef;
 
   constructor() { }amountInput
 
@@ -24,7 +24,11 @@ export class ShoppingEditComponent implements OnInit {
   onShpLstAddItem(){
   	// metoda obsługująca kliknięcie przycisku dodawania elementu do listy zakupów
   	// uzycie + przed amountInput.value żeby zamienić stringa na liczbę
-  	this.shpListItemAdded.emit(new Ingredient(this.nameInputAdded.nativeElement.value, this.amountInputAdded.nativeElement.value));
+  	const ingName = this.nameInputRef.nativeElement.value;
+  	const ingAmount = this.amountInputRef.nativeElement.value;
+  	const newIngredient = new Ingredient(ingName, ingAmount);
+
+  	this.shpListItemAdded.emit(newIngredient);
   }
 
 }

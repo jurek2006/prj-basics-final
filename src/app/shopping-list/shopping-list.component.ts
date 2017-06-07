@@ -19,9 +19,9 @@ export class ShoppingListComponent implements OnInit {
   ngOnInit() {
   }
 
-  onShpListItemAdded(item: Ingredient){
+  onShpListItemAdded(ingredient: Ingredient){
   // metoda obsługi zdarzenia shpListItemAdded - dodająca Ingredient z formularza do listy ingredients
-    this.ingredients.push(item);
+    this.ingredients.push(ingredient);
   }
 
 }
