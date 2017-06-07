@@ -1,3 +1,4 @@
+// recipes.component.ts
 import { Component, OnInit } from '@angular/core';
 
 import { Recipe } from './recipe.model';
@@ -17,8 +18,6 @@ export class RecipesComponent implements OnInit {
   }
 
   onRecipeItemSelected(recipe: Recipe){
-    // console.log(recipe);
-    // this.recipeItemSelected.emit(recipe);
     this.selectedRecipe = recipe;
   }
 

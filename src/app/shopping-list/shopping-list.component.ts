@@ -1,3 +1,4 @@
+// shopping-list.compinent.ts
 import { Component, OnInit } from '@angular/core';
 
 import { Ingredient } from '../shared/ingredient.model';
@@ -16,6 +17,11 @@ export class ShoppingListComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+  }
+
+  onShpListItemAdded(item: Ingredient){
+  // metoda obsługi zdarzenia shpListItemAdded - dodająca Ingredient z formularza do listy ingredients
+    this.ingredients.push(item);
   }
 
 }
