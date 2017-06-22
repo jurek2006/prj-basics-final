@@ -19,7 +19,7 @@ export class ShoppingListComponent implements OnInit {
     this.ingredients = this.slService.getIngredients();
     // nasłuchiwanie, czy nastąpiła zmiana w tablicy ingredients w serwisie
     this.slService.ingredientsChanged.subscribe(
-      () => {this.ingredients = this.slService.getIngredients();}
+      (ingredients: Ingredient[]) => {this.ingredients = ingredients;}
     );
   }
 
