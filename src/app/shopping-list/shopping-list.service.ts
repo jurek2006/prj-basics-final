@@ -21,4 +21,13 @@ export class ShoppingListService{
 	    this.ingredients.push(ingredient);
 	    this.ingredientsChanged.emit(this.ingredients.slice());
 	  }
+
+	addIngredients(addedIngredients: Ingredient[]){
+		// metoda dodająca listę wielu składników do listy ingredients
+		// this.ingredients = this.ingredients.concat(addedIngredients);
+		this.ingredients.push(...addedIngredients);
+		console.log(this.ingredients);
+		this.ingredientsChanged.emit(this.ingredients.slice());
+	}
+
 }
