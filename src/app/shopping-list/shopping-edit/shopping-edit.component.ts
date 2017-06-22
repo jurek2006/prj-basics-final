@@ -1,7 +1,8 @@
 // shopping-edit.component.ts
-import { Component, OnInit, EventEmitter, Output, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 
 import { Ingredient } from '../../shared/ingredient.model';
+import { ShoppingListService } from '../shopping-list.service';
 
 
 @Component({
@@ -11,12 +12,11 @@ import { Ingredient } from '../../shared/ingredient.model';
 })
 export class ShoppingEditComponent implements OnInit {
 
-	@Output() shpListItemAdded = new EventEmitter<Ingredient>();
 	// Dostęp do pól formularza za pomocą referencji lokalnej
 	@ViewChild('nameInput') nameInputRef: ElementRef;
 	@ViewChild('amountInput') amountInputRef: ElementRef;
 
-  constructor() { }amountInput
+  constructor(private slService: ShoppingListService) {}
 
   ngOnInit() {
   }
@@ -28,7 +28,7 @@ export class ShoppingEditComponent implements OnInit {
   	const ingAmount = this.amountInputRef.nativeElement.value;
   	const newIngredient = new Ingredient(ingName, ingAmount);
 
-  	this.shpListItemAdded.emit(newIngredient);
+    this.slService.addIngredient(newIngredient);
   }
 
 }

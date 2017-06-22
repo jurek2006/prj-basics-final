@@ -12,10 +12,11 @@ export class ShoppingListService{
 	];
 
 	getIngredients(): Ingredient[]{
+		// zwraca kopię tablicy ingredients
 		return this.ingredients.slice();
 	}
 
-	addShoppingListItem(ingredient: Ingredient){
+	addIngredient(ingredient: Ingredient){
 	  // metoda dodająca Ingredient do listy ingredients
 	    this.ingredients.push(ingredient);
 	    this.ingredientsChanged.emit();
