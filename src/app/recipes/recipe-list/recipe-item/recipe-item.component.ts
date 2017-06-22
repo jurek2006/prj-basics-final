@@ -1,7 +1,8 @@
 // recipe-item.component.ts
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 import { Recipe } from '../../recipe.model';
+import { RecipeService } from '../../recipe.service';
 
 @Component({
   selector: 'app-recipe-item',
@@ -11,16 +12,15 @@ import { Recipe } from '../../recipe.model';
 export class RecipeItemComponent implements OnInit {
 
 	@Input() recipe: Recipe;
-  // event nie będzie niczego przekazywał, weźmiemy dane, który element został kliknięty z ngFor
-	@Output() recipeItemSelected = new EventEmitter<void>();
 
-  constructor() { }
+  constructor(private recipeService: RecipeService) { }
 
   ngOnInit() {
   }
 
   itemSelected(){
-  	this.recipeItemSelected.emit();
+    // emitowanie zdarzenia i przekazanie wybranego przepisu
+  	this.recipeService.recipeSelected.emit(this.recipe);
   }
 
 }

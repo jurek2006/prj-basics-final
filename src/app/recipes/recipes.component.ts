@@ -18,10 +18,11 @@ export class RecipesComponent implements OnInit {
   constructor(private recipeService: RecipeService) { }
 
   ngOnInit() {
+    // nasłuchiwanie zdarzenia recipeSelected emitowanego przy wybraniu przepisu
+    this.recipeService.recipeSelected.subscribe(
+      (recipe: Recipe) => {this.selectedRecipe = recipe}
+    );
   }
 
-  onRecipeItemSelected(recipe: Recipe){
-    this.selectedRecipe = recipe;
-  }
 
 }
